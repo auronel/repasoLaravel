@@ -12,6 +12,12 @@ class InstallController extends Controller
         return "Modelo $nombre creado correctamente";
     }
 
+    public function seeder(String $nombre)
+    {
+        \Artisan::call("make:seeder $nombre");
+        return "Seeder creado";
+    }
+
     public function migrate()
     {
         \Artisan::call("migrate:fresh --seed");

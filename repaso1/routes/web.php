@@ -19,5 +19,6 @@ Route::get('install/model/{nombre}', 'InstallController@model');
 Route::get('install/migrate', 'InstallController@migrate');
 Route::get('install/migration/{nombre}', 'InstallController@migration');
 Route::get('install/request/{nombre}', 'InstallController@request');
+Route::get('install/seeder/{nombre}', 'InstallController@seeder');
 Route::resource('clientes', 'ClienteController');
 Route::resource('alojamientos', 'AlojamientoController');

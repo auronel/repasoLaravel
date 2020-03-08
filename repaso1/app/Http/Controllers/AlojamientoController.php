@@ -26,7 +26,7 @@ class AlojamientoController extends Controller
      */
     public function create()
     {
-        $provincias = Alojamiento::all();
+        $provincias = ['Almería', 'Cadiz', 'Córdoba', 'Granada', 'Huelva', 'Jaen', 'Málaga', 'Sevilla'];
         return view('alojamientos.create', compact('provincias'));
     }
 

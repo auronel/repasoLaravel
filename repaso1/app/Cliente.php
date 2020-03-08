@@ -8,6 +8,11 @@ class Cliente extends Model
 {
     protected $fillable = ['nombre', 'apellidos', 'perfil'];
 
+    public function alojamientos()
+    {
+        return $this->belongsToMany('App\Alojamiento')->withPivot('habitacion');
+    }
+
     public function scopeNombre($query, $v)
     {
         if (!isset($v)) {

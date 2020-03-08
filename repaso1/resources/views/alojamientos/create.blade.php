@@ -20,7 +20,7 @@
     Nombre: <input type="text" name="nombre">
     <select name="provincias">
         @foreach ($provincias as $item)
-            <option>{{$item->provincias}}</option>
+            <option>{{$item}}</option>
         @endforeach
     </select>
     Añadir imágen: <input type="file" name="foto" accept="image/*">
