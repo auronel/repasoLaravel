@@ -10,10 +10,14 @@ class Cliente extends Model
 
     public function scopeNombre($query, $v)
     {
-        if ($v == '%') {
+        if (!isset($v)) {
             return $query->where('nombre', 'like', '%');
-        } else {
+        }
+
+        if ($v == "%") {
             return $query->where('nombre', 'like', $v);
         }
+
+        return $query->where('nombre', $v);
     }
 }

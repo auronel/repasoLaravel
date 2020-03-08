@@ -11,16 +11,20 @@
 @endif
 <a href="{{route('clientes.create')}}" class="btn btn-success my-3">Crear cliente</a>
 <div class="float-right my-3">
-    <form action="{{route('clientes.index')}}" method="get" onchange="this.form.submit()">
-        <select name="nombre">
-            <option value="%" selected>Todos</option>
-            @foreach ($listaClientes as $cliente)
-                    <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+    <form action="{{route('clientes.index')}}" method="get" name="search">
+        <select name="nombre" onchange="this.form.submit()">
+            <option value="%">Todos</option>
+            @foreach ($todos as $item)
+                @if ($item->nombre==$request->nombre)
+                    <option selected>{{$item->nombre}}</option>
+                @else
+                    <option>{{$item->nombre}}</option>
+                @endif
             @endforeach
         </select>
     </form>
 </div>
-<table class="table table-striped table-dark">
+<table class="table table-striped table-dark text-center">
     <thead>
       <tr>
         <th scope="col">Detalles</th>
@@ -33,7 +37,7 @@
     <tbody>
         @foreach ($clientes as $cliente)
             <tr>
-                <td class="align-middle"></td>
+                <td class="align-middle"><a href="{{route('clientes.show',$cliente)}}" class="btn btn-primary">Detalles</a></td>
                 <td class="align-middle">{{$cliente->nombre}}</td>
                 <td class="align-middle">{{$cliente->apellidos}}</td>
                 <td class="align-middle"><img src="{{asset($cliente->perfil)}}" class="rounded-circle" width="80px" height="80px"></td>

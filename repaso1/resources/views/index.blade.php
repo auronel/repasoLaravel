@@ -10,6 +10,6 @@
 @section('contenido')
     <div class="text-center mt-5">
         <a href="{{route('clientes.index')}}" class="btn btn-success mr-2">Clientes</a>
-        <a href="#" class="btn btn-warning">Alojamientos</a>
+        <a href="{{route('alojamientos.index')}}" class="btn btn-warning">Alojamientos</a>
     </div>
 @endsection

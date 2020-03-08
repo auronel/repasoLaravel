@@ -20,3 +20,4 @@ Route::get('install/migrate', 'InstallController@migrate');
 Route::get('install/migration/{nombre}', 'InstallController@migration');
 Route::get('install/request/{nombre}', 'InstallController@request');
 Route::resource('clientes', 'ClienteController');
+Route::resource('alojamientos', 'AlojamientoController');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Http\Requests\ClienteRequest;
+use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
@@ -12,11 +13,16 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listaClientes = Cliente::all();
-        $clientes = Cliente::orderBy('nombre')->paginate(5);
-        return view('clientes.index', compact('clientes', 'listaClientes'));
+
+        $nombrecito = $request->get('nombre');
+        $todos = Cliente::orderBy("nombre")->get();
+        $clientes = Cliente::orderBy('nombre')
+            ->nombre($nombrecito)
+            ->paginate(5);
+        return view('clientes.index', compact('clientes', 'request', "todos"));
+        //Prueba
     }
 
     /**
@@ -61,7 +67,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return view('clientes.detalles', compact('cliente'));
     }
 
     /**
